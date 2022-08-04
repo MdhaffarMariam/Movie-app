@@ -1,15 +1,19 @@
-import React from 'react'
+import React from "react"
+// import { Image } from "react-bootstrap";
 
-const Rating = ({rating , handleRat}) => {
+const Rating = ({rating,handleRating}) => {
     var x = [];
-    for (var i=0 ; i< rating ; i++){
-        x[i]= <span  onClick={()=>{handleRat(i)}} style = {{color: 'yellow' , cursor: 'pointer'}}>★</span>
+   
+    for (let i=0;i<rating;i++){
+        
+         x[i]= <span onClick={()=>handleRating(i)} style={{fontSize:"20pt", color:"rgb(253,218,22)",cursor:'pointer'}}> ★</span>   
     }
-    for ( var i=rating ; i<=5 ; i++){
-        x[i]= <span  onClick={()=>{handleRat(i)}} style = {{color: 'grey' , cursor: 'pointer'}}>★</span>   
-    }
+    for (let i=rating+1;i<=5;i++){
+       
+       x[i]= <span onClick={()=>handleRating(i)}style={{fontSize:"20pt", color:"lightgrey",cursor:'pointer'}}> ★</span>
+   }
     
-  return (x)
-}
+    return (x )
+  }
 
-export default Rating
+export default Rating;

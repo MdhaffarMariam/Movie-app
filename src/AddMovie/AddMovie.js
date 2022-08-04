@@ -17,11 +17,11 @@ const customStyles = {
   Modal.setAppElement('#root');
 const AddMovie = ({add}) => {
     const [modalIsOpen, setIsOpen] = React.useState(false);
-    const [name, setName] = useState('')
-    const [date, setDate] = useState("")
-    const [poster, setPoster] = useState("")
+    const [title, setTitle] = useState('')
+    const [description, setDescription] = useState("")
+    const [posterURL, setPosterURL] = useState("")
     const [rating, setRating] = useState(1)
-    const handleRat =(x)=> setRating(x);
+    const handleRating =(x)=> setRating(x);
 
 
     function openModal() {
@@ -32,15 +32,16 @@ const AddMovie = ({add}) => {
     function closeModal() {
       setIsOpen(false);
     }
-    const handleSubmit =(e)=>{e.preventDefault();
-    const newMovie={
+    const handleSubmit =(e)=>{
+      e.preventDefault();
+    const newMovie = {
         id : Math.random(),
-        name,
-        date,
-        poster,
+        title,
+        description,
+        posterURL,
         rating
-    }
-add(newMovie)
+    };
+add(newMovie);
 closeModal()
 }
   return (
@@ -54,15 +55,17 @@ closeModal()
       >
         <form className='form-container' onSubmit={handleSubmit}>
         <label> name </label>
-        <input type= "text" value = {name} onChange= {(e)=>setName(e.target.value)}/>
+        <input type= "text" value = {title} onChange= {(e)=>setTitle(e.target.value)} className='Form-control'/>
         <label> date </label>
-        <input type = "date" value = {date} onChange= {(e)=>setDate(e.target.value)}/>
+        <input type = "date" value = {description} onChange= {(e)=>setDescription(e.target.value)}/>
         <label> poster </label>
-        <input value = {poster} type='url' onChange= {(e)=>setPoster(e.target.value)}/>
+        <input value = {posterURL} type='url' onChange= {(e)=>setPosterURL(e.target.value)}/>
         <label> rating </label>
-        <Rating className='rating-input'rating = {rating} handleRat={handleRat}/>
-        <button type='Submit'>Confirm</button>
+        <Rating rating = {rating} handleRating={handleRating}/>
+        <div>
+        <button type='submit'>Confirm</button>
         <button> cancel </button>
+        </div>
         </form>
       </Modal>
         {/* <Rating/> */}
